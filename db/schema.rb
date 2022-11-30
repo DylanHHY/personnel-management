@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_30_152258) do
+ActiveRecord::Schema.define(version: 2022_11_30_193133) do
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "tel"
+    t.string "add"
+    t.text "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "employees", force: :cascade do |t|
     t.string "name"
@@ -22,6 +32,26 @@ ActiveRecord::Schema.define(version: 2022_11_30_152258) do
     t.index ["role_id"], name: "index_employees_on_role_id"
   end
 
+  create_table "events", force: :cascade do |t|
+    t.integer "employee_id", null: false
+    t.integer "client_id", null: false
+    t.integer "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_events_on_client_id"
+    t.index ["employee_id"], name: "index_events_on_employee_id"
+    t.index ["record_id"], name: "index_events_on_record_id"
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "start_at"
+    t.datetime "end_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -29,4 +59,7 @@ ActiveRecord::Schema.define(version: 2022_11_30_152258) do
   end
 
   add_foreign_key "employees", "roles"
+  add_foreign_key "events", "clients"
+  add_foreign_key "events", "employees"
+  add_foreign_key "events", "records"
 end
