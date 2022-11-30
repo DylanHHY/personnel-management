@@ -1,0 +1,31 @@
+<% if client.errors.any? %>
+  <ul>
+    <% client.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for client do |form| %>
+  <div>
+    客戶姓名：<%= form.text_field :name %>
+  </div>
+
+  <div>
+    電話：<%= form.text_field :tel %>
+  </div>
+
+  <div>
+    Email：<%= form.text_field :email %>
+  </div>
+
+  <div>
+    通訊地址：<%= form.text_field :add %>
+  </div>
+
+  <div>
+    備註：<%= form.text_area :note %>
+  </div>
+
+  <%= form.submit %>
+<% end %>

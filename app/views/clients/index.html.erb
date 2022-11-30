@@ -1,0 +1,22 @@
+<h1>客戶列表</h1>
+<%= link_to "員工列表", new_client_path %>
+<%= link_to "新增客戶資料", new_client_path %>
+
+<table>
+  <thead>
+    <tr>
+      <td>客戶姓名</td>
+      <td>客戶 Email</td>
+    </tr>
+    <tbody>
+      <% @clients.each do |client| %>
+        <tr>
+          <td><%= link_to client.name, client %></td>
+          <td><%= client.email %></td>
+          <td><%= link_to "修改客戶資料", edit_client_path(client) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </thead>
+
+</table>
