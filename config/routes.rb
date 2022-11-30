@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resource :users, except: [:new, :destroy] do 
+    get :sign_up
+    get :sign_in
+  end
+
+  resource :sessions, only: [:create, :destroy]
+
   resources :employees, except: [:destroy]
+
   resources :clients, except: [:destroy]
+
   resources :records, except: [:index, :destroy]
 
   root "employees#index"

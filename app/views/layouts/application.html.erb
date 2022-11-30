@@ -11,6 +11,22 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <div class="flex">
+        <li><%= current_user.email %></li>
+        <li><%= link_to "登出", sessions_path, method: "delete" %></li>
+      </div>
+    <% else %>
+      <div>
+        <li><%= link_to "首頁", "/" %></li>
+      </div>
+      <div class="flex">
+        <li><%= link_to "登入", sign_in_users_path %></li>
+        <li><%= link_to "註冊", sign_up_users_path %></li>
+      </div>
+    <% end %>
+
+    <span><%= notice %></span>
     <%= yield %>
   </body>
 </html>

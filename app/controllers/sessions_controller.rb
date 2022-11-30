@@ -1,18 +1,19 @@
 
 class SessionsController < ApplicationController
   def create
-    employee = Employee.login(params[:employee])
+    user = User.login(params[:user])
 
-    if employee
+    if user
       # 發號碼牌 發 session
-      session[:employee_session] = employee.id
+      session[:user_session] = user.id
+      redirect_to "/"
     else
-      redirect_to "/employees/sign_in", notice: "登入失敗"
+      redirect_to "/users/sign_in", notice: "登入失敗"
     end
   end
 
   def destroy
-    session[:employee_session] = nil
+    session[:user_session] = nil
     redirect_to root_path, notice: "已登出"
   end
 end
