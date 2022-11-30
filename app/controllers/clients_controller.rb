@@ -10,7 +10,7 @@ class ClientsController < ApplicationController
   end
   
   def create
-    @client = Client.new(Client_params)
+    @client = Client.new(client_params)
     if @client.save
       redirect_to clients_path, notice: "客戶資料建立完成！"
     else
@@ -34,10 +34,10 @@ class ClientsController < ApplicationController
 
   private
   def client_params
-    params.require(:clients).permit(:name, :email, :tel, :add, :note)
+    params.require(:client).permit(:name, :email, :tel, :add, :note)
   end
   
-  def find_Client
+  def find_client
     @client = Client.find(params[:id])
   end
 end
