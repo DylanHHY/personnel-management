@@ -1,0 +1,19 @@
+<% if employee.errors.any? %>
+  <ul>
+    <% employee.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for employee do |form| %>
+  <div>
+    員工姓名：<%= form.text_field :name %>
+  </div>
+
+  <div>
+    Email：<%= form.text_field :email %>
+  </div>
+
+  <%= form.submit %>
+<% end %>

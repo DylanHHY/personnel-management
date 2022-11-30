@@ -1,0 +1,23 @@
+<h1>員工列表</h1>
+
+<%= link_to "新增員工資料", new_employee_path %>
+<table>
+  <thead>
+    <tr>
+      <td>員工編號</td>
+      <td>員工姓名</td>
+      <td>員工 Email</td>
+    </tr>
+    <tbody>
+      <% @employees.each do |emp| %>
+        <tr>
+          <td><%= link_to emp.emp_no, emp %></td>
+          <td><%= emp.name %></td>
+          <td><%= emp.email %></td>
+          <td><%= link_to "修改員工資料", edit_employee_path(emp) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </thead>
+
+</table>
