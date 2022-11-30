@@ -1,3 +1,3 @@
 class Employee < ApplicationRecord
-  belongs_to :role_id
+  belongs_to :role
 end

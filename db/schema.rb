@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 2022_11_30_152258) do
     t.string "name"
     t.string "email"
     t.string "emp_no"
-    t.integer "role_id_id", null: false
+    t.integer "role_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["role_id_id"], name: "index_employees_on_role_id_id"
+    t.index ["role_id"], name: "index_employees_on_role_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -28,5 +28,5 @@ ActiveRecord::Schema.define(version: 2022_11_30_152258) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "employees", "role_ids"
+  add_foreign_key "employees", "roles"
 end
