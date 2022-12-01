@@ -15,5 +15,9 @@
     Email：<%= form.text_field :email %>
   </div>
 
+  <div>
+    身份：<%= form.select :role_id, Role.all.map{ |r| [r.name, r.id] }, {}, :class => "form-control" %>
+  </div>
+
   <%= form.submit %>
 <% end %>
