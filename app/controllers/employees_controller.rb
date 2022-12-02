@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
   before_action :find_employee, only: [:show, :edit, :update]
   
   def index
@@ -12,7 +12,6 @@ class EmployeesController < ApplicationController
   
   def create
     @employee = @_user.build_employee(employee_params)
-    # render html: params
     if @employee.save
       redirect_to employees_path, notice: "員工資料建立完成！"
     else
@@ -20,8 +19,7 @@ class EmployeesController < ApplicationController
     end
   end
   
-  def show
-    # if current_user 
+  def show 
   end
   
   def edit

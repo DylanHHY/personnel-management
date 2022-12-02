@@ -1,5 +1,4 @@
 class Client < ApplicationRecord
-  has_many :events
-  has_many :records, through: :events
-  belongs_to :employees,
+  has_many :records
+  belongs_to :employees
 end

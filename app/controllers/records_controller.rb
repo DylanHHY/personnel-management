@@ -1,4 +1,5 @@
 class RecordsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_record, only: [:show, :edit, :update]
   
   def new
